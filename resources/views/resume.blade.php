@@ -17,8 +17,9 @@
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{$post->name}}</h5>
-          <p class="card-text">Стаж: {{$post->age}} лет, Телефон: {{$post->skills}}</p>
+          <h5 class="card-title">{{$post->title_resume}}</h5>
+          <p class="card-text">Стаж: {{$post->age}} лет, <br> Телефон: {{$post->phone}} </p>
+          <p class="card-text">Навыки: {{$post->skills}}</p>
           <a href="/resume/{{$post->id}}" class="btn btn-primary">Перейти</a>
         </div>
       </div>

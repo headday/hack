@@ -61,7 +61,6 @@
       <label for="exampleInputPassword1" class="form-label">Профессия</label>
       <input type="text" class="form-control" name="profession">
     </div>
-      
     <button type="submit" class="btn btn-primary mt-2">Сохранить и опубликовать</button>
     {{ csrf_field() }}
 </form>

@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','App\Http\Controllers\AuthController@Index');
 Route::get('/registration', function () {
     return view('Registration');
 });
@@ -29,6 +27,7 @@ Route::post('/registration',
 Route::get('/auth/login','App\Http\Controllers\AuthController@Auth')->name('resumeAuth');
 
 Route::get('/resume','App\Http\Controllers\ResumeController@GetAllResume');
+
 Route::get('/resume/{id}','App\Http\Controllers\ResumeController@GetResumeWithId');
 
 
