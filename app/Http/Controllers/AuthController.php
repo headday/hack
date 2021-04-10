@@ -10,11 +10,15 @@ use Illuminate\Support\Facades\Cookie;
 class AuthController extends Controller
 {
     public function Index(Request $request){
+        
         $value = Cookie::get('token');
-        $decodeToken = explode('`',$value);
-        $name = $decodeToken[3];
-        //dd($name);
-        return view('welcome')->with(['name' => $name]);
+        if(isset($value)){
+            $decodeToken = explode('`',$value);
+            $name = $decodeToken[3];
+            return view('welcome')->with(['name' => $name]);
+        }else{
+            return view('welcome');
+        }
     }
 
     public function Registration(Request $request){
