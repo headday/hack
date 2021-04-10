@@ -42,7 +42,37 @@ maskPhone('.form-telephone')
 
 }
 
+try {
 
+        let haveWork1 = document.querySelector('#have_work');
+        let haventWork = document.querySelector('#havent_work')
+        
+        
+        haveWork1.addEventListener('click',(e)=>{
+            if(e.target.checked){
+                 console.log('asd')
+                 let block = document.querySelector('.stage-block')
+                block.removeAttribute('hidden')
+            }
+            // else{
+            //      console.log('asdasasd')
+            //      let block = document.querySelector('.stage-block')
+            //     block.setAttribute('hidden',true)
+            // }  
+        }) 
+
+        haventWork.addEventListener('click',(e)=>{
+            if(e.target.checked){
+                console.log('asd')
+                let block = document.querySelector('.stage-block')
+                block.setAttribute('hidden',true)
+            }
+        })
+
+    
+                 
+} catch (error) {
+}
 
 
 try {

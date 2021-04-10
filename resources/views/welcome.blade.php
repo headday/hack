@@ -24,6 +24,7 @@
 </ul></div>
   <div class="container">
     <div class="col-md-4 offset-4">
+      @yield('form-resume')
       @yield('form')
     </div>
     <div class="row">
