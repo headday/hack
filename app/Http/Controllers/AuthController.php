@@ -8,6 +8,9 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
+
+
+
 {
     public function Index(Request $request){
         
@@ -15,11 +18,22 @@ class AuthController extends Controller
         if(isset($value)){
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
+<<<<<<< HEAD
             return view('welcome')->with(['name' => $name]);
         }else{
             return view('welcome');
         }
+=======
+            //dd($name);
+            return view('welcome')->with(['name' => $name]);
+        }
+        else{
+            return view('welcome');
+        }
+       
+>>>>>>> ae7352ae73467f8a6a7be9b32ee1d00969985bce
     }
+
 
     public function Registration(Request $request){
         /* $this->validate($request,['FIO' => 'required|max:255',
@@ -37,6 +51,7 @@ class AuthController extends Controller
         ];
         DB::insert("insert into `users` (login,password,name,second_name,email,role_id) values('{$data['person_email']}','{$data['person_password']}','{$data['person_name']}','{$data['person_secondname']}','{$data['person_email']}','{$data['person_role']}')");
     }
+
     public function Auth(Request $request){
         $req= $request->all();
         $login = $req['login'];
@@ -47,7 +62,7 @@ class AuthController extends Controller
         ->where('password','=',$password)
         ->count();
       
-                            
+               dump($req);             
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)
@@ -87,6 +102,7 @@ class AuthController extends Controller
                 //return view('personal-page')->with(['name'=>$name]);
                 return redirect('/');
 
+
            
         } 
         else{
@@ -94,6 +110,11 @@ class AuthController extends Controller
             dump($message);
             //return redirect('/auth')->with(['message'=>$message]);
         }
+    }
+
+    public function PersPage(){
+
+     return view('personal-page');
     }
 
 }

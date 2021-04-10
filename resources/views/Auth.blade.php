@@ -10,6 +10,7 @@
       <input type="password" class="form-control" name="password">
     </div>
     <button type="submit" class="btn btn-primary mt-2">Войти</button>
+    {{ csrf_field() }}
 </form>
 
 @endsection
