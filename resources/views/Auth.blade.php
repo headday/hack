@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('form')
-<form method="POST" action="{{route('resumeAuth')}}">
+<form method="GET" action="{{route('resumeAuth')}}">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email</label>
         <input type="email" class="form-control" name="login">

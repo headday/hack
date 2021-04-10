@@ -4,23 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-
 use App\Models\Profile;
 use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
-{   public function Index(Request $request){
-    
-    $value=Cookie::get('token');
-    
-    if(isset($value)){
-        $name=explode('.',$value)[0];
-        echo $value;
-      //  return view('welcome')->with(['name'=>$name]);
-    }
+
+
+
+{
+    public function Index(Request $request){
         
+        $value = Cookie::get('token');
+        if(isset($value)){
+            $decodeToken = explode('`',$value);
+            $name = $decodeToken[3];
+            //dd($name);
+            return view('welcome')->with(['name' => $name]);
+        }
+        else{
+            return view('welcome');
+        }
+       
     }
+
+
     public function Registration(Request $request){
         /* $this->validate($request,['FIO' => 'required|max:255',
         'Phone' => 'required', 'Stage' => 'required',
@@ -51,26 +58,44 @@ class AuthController extends Controller
                dump($req);             
         if($profile > 0){
             $name=Profile::select('name')
-            ->where('login','=',$login)
-            ->where('password','=',$password)->get();
-            $name=$name->toJson();
-            $name=json_decode($name);
-            $name=$name[0];
-            $token_log=Profile::select('login')
-            ->where('login','=',$login)
-            ->where('password','=',$password)->get();
-            $token_pass=Profile::select('password')
-            ->where('login','=',$login)
-            ->where('password','=',$password)->get();
-            $token_pass=md5($token_pass);
-            $token_role=Profile::select('role_id')
-            ->where('login','=',$login)
-            ->where('password','=',$password)->get();
-            //$token=$token_log.'.'.$token_pass.'.'.$token_role;
-            //$token=Cookie::queue('token',$token,60);
-            return view('personal-page')->with(['name'=>$name]);
-           //return view('personal-page')->with(['name'=>$name]);
-           //return redirect('/lk');
+                ->where('login','=',$login)
+                ->where('password','=',$password)->get();
+                $name=$name->toJson();
+                $name=json_decode($name);
+                $name=$name[0]->name;
+
+
+                // dd($name);
+                $token_log=Profile::select('login')
+                ->where('login','=',$login)
+                ->where('password','=',$password)->get();
+                $token_log = $token_log->toJson();   
+                $token_log = json_decode($token_log);  
+                $token_log = $token_log[0]->login;
+             
+
+                $token_pass=Profile::select('password')
+                ->where('login','=',$login)
+                ->where('password','=',$password)->get();
+
+                $token_pass=md5($token_pass);
+
+                $token_role=Profile::select('role_id')
+                ->where('login','=',$login)
+                ->where('password','=',$password)->get();
+                $token_role = $token_role->toJson();   
+                $token_role = json_decode($token_role);  
+                $token_role = $token_role[0]->role_id;
+                // dd($token_role);
+
+
+                $token=$token_log.'`'.$token_pass.'`'.$token_role.'`'.$name;
+                $token=Cookie::queue('token',$token,60);
+                //return view('personal-page')->with(['name'=>$name]);
+                //return view('personal-page')->with(['name'=>$name]);
+                return redirect('/');
+
+
            
         } 
         else{
@@ -79,12 +104,6 @@ class AuthController extends Controller
             //return redirect('/auth')->with(['message'=>$message]);
         }
     }
-
-    // public function Redirect(){
-
-    //     return redirect('/lk')->cookie($this->token);
-
-    // }
 
     public function PersPage(){
 
