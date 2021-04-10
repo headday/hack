@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{asset('style.css')}}">
 @extends('welcome')
 
 <div class="fixed-top" id="left-bar">
