@@ -18,20 +18,14 @@ class AuthController extends Controller
         if(isset($value)){
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
-<<<<<<< HEAD
-            return view('welcome')->with(['name' => $name]);
-        }else{
-            return view('welcome');
-        }
-=======
+
             //dd($name);
-            return view('welcome')->with(['name' => $name]);
+            return view('personal-page')->with(['name' => $name]);
         }
         else{
             return view('welcome');
         }
        
->>>>>>> ae7352ae73467f8a6a7be9b32ee1d00969985bce
     }
 
 
@@ -62,7 +56,7 @@ class AuthController extends Controller
         ->where('password','=',$password)
         ->count();
       
-               dump($req);             
+                
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)
