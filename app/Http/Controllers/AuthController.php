@@ -19,12 +19,18 @@ class AuthController extends Controller
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
             //dd($name);
-            return view('welcome')->with(['name' => $name]);
+            return view('personal-page')->with(['name' => $name]);
         }
         else{
             return view('welcome');
         }
        
+    }
+
+    public function Exit(){
+
+        return redirect('/')->withCookie(Cookie::forget('token'));
+
     }
 
 
@@ -55,7 +61,7 @@ class AuthController extends Controller
         ->where('password','=',$password)
         ->count();
       
-               dump($req);             
+                    
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)
