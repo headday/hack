@@ -18,6 +18,12 @@ class AuthController extends Controller
         if(isset($value)){
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
+<<<<<<< HEAD
+            return view('welcome')->with(['name' => $name]);
+        }else{
+            return view('welcome');
+        }
+=======
             //dd($name);
             return view('personal-page')->with(['name' => $name]);
         }
@@ -25,6 +31,7 @@ class AuthController extends Controller
             return view('welcome');
         }
        
+>>>>>>> ae7352ae73467f8a6a7be9b32ee1d00969985bce
     }
 
     public function Exit(){
