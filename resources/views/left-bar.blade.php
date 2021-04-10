@@ -9,9 +9,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/form-resume">Создать резюме</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Отклики<span class="badge rounded-pill bg-warning">4</span></a>
-      </li>
     </ul>
 </div>
 

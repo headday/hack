@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','App\Http\Controllers\AuthController@Index');
+Route::get('/lk','App\Http\Controllers\AuthController@Exit');
+
 Route::get('/registration', function () {
     return view('Registration');
 });

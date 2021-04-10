@@ -28,6 +28,12 @@ class AuthController extends Controller
        
     }
 
+    public function Exit(){
+
+        return redirect('/')->withCookie(Cookie::forget('token'));
+
+    }
+
 
     public function Registration(Request $request){
         /* $this->validate($request,['FIO' => 'required|max:255',
@@ -56,7 +62,11 @@ class AuthController extends Controller
         ->where('password','=',$password)
         ->count();
       
+<<<<<<< HEAD
                 
+=======
+                    
+>>>>>>> d80140c02481e758cfc3df4156f7b045e8e75da4
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)
