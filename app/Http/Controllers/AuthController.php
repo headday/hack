@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 use App\Models\Profile;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -37,7 +39,32 @@ class AuthController extends Controller
       
                             
         if($profile > 0){
-             return redirect('/');
+            $token_log=Profile::select('login')
+            ->where('login','=',$login)
+            ->where('password','=',$password)->get();
+            $token_pass=Profile::select('password')
+            ->where('login','=',$login)
+            ->where('password','=',$password)->get();
+            $token_role=Profile::select('role_id')
+            ->where('login','=',$login)
+            ->where('password','=',$password)->get();
+            $token=md5($token_log.$token_pass.$token_role);
+            $token=Cookie::forever('token',$token);
+            return redirect('/')->cookie($token);
+           
         } 
+        else{
+            $message="Неверный логин или пароль";
+            dump($message);
+            //return redirect('/auth')->with(['message'=>$message]);
+        }
+    }
+
+
+    public function Views(){
+
+        
+
+
     }
 }

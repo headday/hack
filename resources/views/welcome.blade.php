@@ -16,7 +16,7 @@
     <a class="nav-link" href="#"><p class="text-white">Вакансии</p></a>
   </li>
   <li class="nav-item">
-<<<<<<< HEAD
+
     <a class="nav-link" href="/auth"><p class="text-white">Вход</p></a>
   </li>
   <li class="nav-item">
@@ -34,17 +34,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
   <script src="{{asset('script.js')}}"></script>
 
-=======
-    <a class="nav-link" href="#"><p class="text-white">Вход</p></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#"><p class="text-white">Регистрация</p></a>
-  </li>
-</ul></div>
+
+   
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
->>>>>>> cb676367519c9c1df7b476212267e3bccee45a48
+
 </body>
 </html>

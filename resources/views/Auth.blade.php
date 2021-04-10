@@ -11,4 +11,5 @@
     </div>
     <button type="submit" class="btn btn-primary mt-2">Войти</button>
 </form>
+
 @endsection

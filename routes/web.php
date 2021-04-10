@@ -25,3 +25,4 @@ Route::get('/auth', function () {
 Route::post('/registration',
             'App\Http\Controllers\AuthController@Registration')->name('resumeStore');
 Route::get('/auth/login','App\Http\Controllers\AuthController@Auth')->name('resumeAuth');
+Route::get('/left','App\Http\Controllers\AuthController@Views');
