@@ -11,8 +11,9 @@ class ResumeController extends Controller
         $posts = Resume::all();
         return view('resume')->with(['posts'=>$posts]);
     }
-    public function GetResume($text){
+    public function GetResumeWithId($id){
         
-        
+        $resume = Resume::find($id);
+        dump($resume);
     }
 }

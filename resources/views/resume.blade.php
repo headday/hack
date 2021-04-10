@@ -18,7 +18,7 @@
         <div class="card-body">
           <h5 class="card-title">{{$post->name}}</h5>
           <p class="card-text">Стаж: {{$post->age}} лет, Телефон: {{$post->skills}}</p>
-          <a href="#" class="btn btn-primary">Перейти</a>
+          <a href="/resume/{{$post->id}}" class="btn btn-primary">Перейти</a>
         </div>
       </div>
     @endforeach
