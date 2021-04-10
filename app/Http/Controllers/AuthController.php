@@ -11,9 +11,10 @@ class AuthController extends Controller
 {
     public function Index(Request $request){
         $value = Cookie::get('token');
-        $name = explode('`',$value);
-        dd($name);
-        return view('welcome')->with(['name' => $name[4]]);
+        $decodeToken = explode('`',$value);
+        $name = $decodeToken[3];
+        //dd($name);
+        return view('welcome')->with(['name' => $name]);
     }
 
     public function Registration(Request $request){
