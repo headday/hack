@@ -5,6 +5,7 @@
     <input type="text" class="form-control" id="resume_search" placeholder="Профессия/вакансия">
 </div>
 <div class="form-check">
+    <h2>Фильтры</h2>
     <input class="form-check-input" type="checkbox" value="" name="resume_stage">
     <label class="form-check-label" for="flexCheckChecked">
       Опыт работы
