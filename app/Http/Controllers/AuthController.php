@@ -63,7 +63,7 @@ class AuthController extends Controller
 
     public function Views(){
 
-        
+        return view('left-bar');
 
 
     }
