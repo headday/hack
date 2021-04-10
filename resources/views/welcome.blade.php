@@ -13,10 +13,13 @@
     <a class="nav-link active" aria-current="page" href="#"><p class="text-white">Главная</p></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><p class="text-white">Вакансии</p></a>
+    <a class="nav-link" href="/resume"><p class="text-white">Вакансии</p></a>
   </li>
   <li class="nav-item">
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca10fa30328c482390fc73316c1fc6502fca3f5b
     <a class="nav-link" href="/auth"><p class="text-white">Вход</p></a>
   </li>
   <li class="nav-item">
@@ -27,6 +30,9 @@
     <div class="col-md-4 offset-4">
       @yield('form')
     </div>
+    <div class="row">
+      @yield('content')
+    </div>
 
   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -34,6 +40,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
   <script src="{{asset('script.js')}}"></script>
 
+<<<<<<< HEAD
 
    
   
@@ -41,5 +48,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
+=======
+>>>>>>> ca10fa30328c482390fc73316c1fc6502fca3f5b
 </body>
 </html>
