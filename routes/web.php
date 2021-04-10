@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/registration', function () {
+    return view('Registration');
+});
+Route::get('/auth', function () {
+    return view('Auth');
+});
+Route::post('/registration',
+            'App\Http\Controllers\AuthController@Registration')->name('resumeStore');
+Route::get('/auth/login','App\Http\Controllers\AuthController@Auth')->name('resumeAuth');
