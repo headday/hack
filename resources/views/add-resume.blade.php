@@ -28,13 +28,11 @@
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Ваши навыки</label>
       <input type="text" class="form-control" name="skills">
-      <button class="btn btn-dark mt-2" type="button">Добавить</button>
     </div>
 
      <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Мероприятия, в которых вы участвовали</label>
       <input type="text" class="form-control" name="events">
-      <button class="btn btn-dark mt-2" type="button">Добавить</button>
     </div>
 
      <div class="mb-3">
@@ -61,7 +59,7 @@
       <label for="exampleInputPassword1" class="form-label">Профессия</label>
       <input type="text" class="form-control" name="profession">
     </div>
-    <button type="submit" class="btn btn-primary mt-2">Сохранить и опубликовать</button>
+    <button type="submit" class="btn btn-primary mt-2 mb-3">Сохранить и опубликовать</button>
     {{ csrf_field() }}
 </form>
 

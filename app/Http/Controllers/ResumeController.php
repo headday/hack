@@ -7,7 +7,6 @@ use App\Models\Resume;
 use App\Models\Review;
 use Illuminate\Support\Facades\Cookie;
 
-
 class ResumeController extends Controller
 {   
     public function Name(){
@@ -64,7 +63,6 @@ class ResumeController extends Controller
 
     public function GetResumeWithId($id){
 
-
         // $resume = Resume::join('users','resumes.user_id','=','users.id')->get();
         $resume = Resume::where('id','=',$id)->get();
         $resEvents = Resume::select('events')->where('id','=',$id)->get();
@@ -90,16 +88,40 @@ class ResumeController extends Controller
 
         //$evt = explode(',', $resume['items'][0]['attributes']);
 
+        return view('detailResume')->with(['resume' => $resume,'events' => $arr,'id' =>$id]);
+
 
     }
+
+
+
+    
 
     public function SaveResume($data){
         
     }
 
+    public function showAddResume() {
+        // $value = Cookie::get('token');
+        // if(isset($value)){
+        //     $decodeToken = explode('`',$value);
+        //     $name = $decodeToken[3];
+        //     $cont='personal-page';
+
+        //     //dd($name);
+        //     return view('add-resume')->with(['name' => $name,'cont'=>$cont]);
+        // }
+        // else{
+        //     $cont='welcome';
+        //     return view('add-resume')->with(['cont'=>$cont]);
+        // }
+    }
+
+
     public function addResume(Request $request) {
 
         $value = Cookie::get('token');
+       
        
         $userId = explode('`',$value);
         $id = $userId[4];           
@@ -121,23 +143,34 @@ class ResumeController extends Controller
         DB::insert("insert into `resumes` (age,address,phone,skills,education,work_experience,profession,stage,title_resume,events,user_id) 
         values('{$data['age']}','{$data['address']}','{$data['phone']}','{$data['skills']}',
         '{$data['education']}','{$data['work_experience']}','{$data['profession']}','{$data['stage']}','{$data['title_resume']}','{$data['events']}','$id')");
+
        $func=new ResumeController();
        $name=$func->Name();
        $cont=$func->inAkk();
         return view('add-resume')->with(['cont'=>$cont]);
+        
+   
+
     }
 
     public function showMyResume(){
         $value = Cookie::get('token');
        
         $userId = explode('`',$value);
+        $name = $userId[3];
         $id = $userId[4];
 
         $resumes = Resume::select()->where('user_id','=',$id)->get();
+
         $func=new ResumeController();
         $cont=$func->inAkk();
         $name=$func->Name();
         return view('my-resumes')->with(['posts' => $resumes,'cont'=>$cont,'name'=>$name]);
+
+        // $resumes::find($id)
+        // dd($resumes);
+       // return view('my-resumes')->with(['posts' => $resumes,'name' => $name]);
+
 
     }
     public function addMessage(Request $request) {
