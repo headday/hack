@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Resume;
+use App\Models\Review;
 use Illuminate\Support\Facades\Cookie;
 
 class ResumeController extends Controller
 {
+    public function Notice(){
+
+        $count=Review::select('id')->count();
+        return $count;
+
+    }
+
     public function GetAllResume(){
         $posts = Resume::all();
         $value = Cookie::get('token');
@@ -101,6 +109,9 @@ class ResumeController extends Controller
         // $resumes::find($id)
         // dd($resumes);
         return view('my-resumes')->with(['posts' => $resumes]);
+        
 
     }
+
+    
 }
