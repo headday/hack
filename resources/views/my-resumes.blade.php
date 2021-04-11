@@ -5,7 +5,6 @@
 <div class="resumes">
     @foreach ($posts as $post)
     <div class="card mb-2" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{$post->title_resume}}</h5>
           <p class="card-text">Стаж: {{$post->age}} лет, <br> Телефон: {{$post->phone}} </p>

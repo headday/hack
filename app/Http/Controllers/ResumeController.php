@@ -5,10 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Cookie;
-<<<<<<< HEAD
 
-=======
->>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
 
 class ResumeController extends Controller
 {
@@ -32,15 +29,6 @@ class ResumeController extends Controller
 
     public function GetResumeWithId($id){
 
-<<<<<<< HEAD
-        $resume = Resume::find($id);
-       // dump($resume);
-=======
-        // $resume = Resume::find($id);
-        // dump($resume);
->>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
-
-        
         // $resume = Resume::join('users','resumes.user_id','=','users.id')->get();
         $resume = Resume::where('id','=',$id)->get();
         $resEvents = Resume::select('events')->where('id','=',$id)->get();
@@ -51,7 +39,7 @@ class ResumeController extends Controller
 
 
         //$evt = explode(',', $resume['items'][0]['attributes']);
-        return view('detailResume')->with(['resume' => $resume,'events' => $arr]);
+        return view('detailResume')->with(['resume' => $resume,'events' => $arr,'id' =>$id]);
     }
     public function SaveResume($data){
         
@@ -97,6 +85,17 @@ class ResumeController extends Controller
         // $resumes::find($id)
         // dd($resumes);
         return view('my-resumes')->with(['posts' => $resumes]);
+    }
 
+    public function addMessage(Request $request) {
+        $value = Cookie::get('token');
+       
+        $userId = explode('`',$value);
+        $id = $userId[4];
+
+        $data=$request->all();
+        // dd($data);
+        DB::insert('insert into reviews (message,hr_id,resume_id) values (?, ?,?)', [$data['message'], $data['id'],$id]);
+        return view('welcome');
     }
 }
