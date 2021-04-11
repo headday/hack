@@ -61,12 +61,6 @@ class AuthController extends Controller
         ->where('login','=',$login)
         ->where('password','=',$password)
         ->count();
-      
-<<<<<<< HEAD
-                
-=======
-                    
->>>>>>> d80140c02481e758cfc3df4156f7b045e8e75da4
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)
@@ -75,6 +69,13 @@ class AuthController extends Controller
                 $name=json_decode($name);
                 $name=$name[0]->name;
 
+
+                $userId=Profile::select('user_id')
+                ->where('login','=',$login)
+                ->where('password','=',$password)->get();
+                $userId=$userId->toJson();
+                $userId=json_decode($userId);
+                $userId=$userId[0]->id;
 
                 // dd($name);
                 $token_log=Profile::select('login')
@@ -100,7 +101,7 @@ class AuthController extends Controller
                 // dd($token_role);
 
 
-                $token=$token_log.'`'.$token_pass.'`'.$token_role.'`'.$name;
+                $token=$token_log.'`'.$token_pass.'`'.$token_role.'`'.$name.'`'.$userId;
                 $token=Cookie::queue('token',$token,60);
                 //return view('personal-page')->with(['name'=>$name]);
                 //return view('personal-page')->with(['name'=>$name]);
