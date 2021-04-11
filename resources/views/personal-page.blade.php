@@ -35,11 +35,12 @@
       @extends('left-bar')
       {{-- @yield('content') --}}
       <div class="container">
-        <div class="col-md-4 offset-4">
+        <div class="col-md-4 offsset-4">
           
         
         </div>
         <div class="row" style="margin-left: 150px;">
+          @yield('favorites-resumes')
           @yield('my-resumes')
           @yield('form-resume')
           @yield('content')

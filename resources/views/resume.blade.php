@@ -18,7 +18,7 @@
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5 class="card-title">{{$post->title_resume}}</h5>
-          @if ($role = '2')
+          @if ($role == '2')
             <form method="POST" action="{{route('addFavorite')}}">
               <input type="text" name=resume_id value={{$post->id}} hidden>
               <input type="text" name=user_id value="{{$userid}}" hidden>

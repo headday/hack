@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Profile;
+use App\Models\Favorites;
 use App\Models\Resume;
 use App\Models\Review;
 use Illuminate\Support\Facades\Cookie;
@@ -64,7 +66,7 @@ class ResumeController extends Controller
             $role = $decodeToken[2];
             $userId = $decodeToken[4];
             
-            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role',$role,'userid'=>$userId]);
+            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role'=>$role,'userid'=>$userId]);
         }
         else{
             $cont='welcome';
@@ -105,14 +107,6 @@ class ResumeController extends Controller
 
 
     }
-
-
-
-    
-
-
-
-
 
     public function addResume(Request $request) {
 
@@ -196,8 +190,26 @@ class ResumeController extends Controller
 
     }
 
+    public function showFavoritesResumes() {
+        $value = Cookie::get('token');
+       
+        $userId = explode('`',$value);
+        $name = $userId[3];
+        $id = $userId[4];
 
+        $resumes = Favorites::select()->join('resumes','resumes.id','=','id_resume')->where('id_hr',"$id")->get();
+
+
+        // dd($resumes);
+
+        $func=new ResumeController();
+        $cont=$func->inAkk();
+        $name=$func->Name();
+        return view('favorites')->with(['posts' => $resumes,'cont'=>$cont,'name'=>$name]);
+    }
     
-
+    public function showLinkFavorite() {
+        
+    }
     
 }

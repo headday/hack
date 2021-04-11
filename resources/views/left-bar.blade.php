@@ -14,6 +14,10 @@
         <a class="nav-link" href="/form-resume">Создать резюме</a>
         {{ csrf_field() }}
       </li>
+
+      <li class="nav-item w-50px">
+        <a class="nav-link" href="/favorites-resumes">Избранное</a>
+      </li>
     </ul>
 </div>
 

@@ -52,3 +52,9 @@ Route::post('/form-resume','App\Http\Controllers\ResumeController@addResume')->n
 Route::get('/show-message','App\Http\Controllers\ResumeController@showMessage');
 
 
+Route::get('/favorites-resumes','App\Http\Controllers\ResumeController@showFavoritesResumes');
+
+
+Route::get('/favorites-resumes','App\Http\Controllers\ResumeController@showLinkFavorites');
+
+
