@@ -190,7 +190,7 @@ class ResumeController extends Controller
         $data=$request->all();
 
         DB::insert('insert into reviews (message,hr_id,resume_id) values (?, ?,?)', [$data['message'], $id,$data['id']]);
-        return view('welcome');
+        return view('personal-page');
 
 
     }
