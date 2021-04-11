@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends("$cont")
 @section('content')
 @foreach ($resume as  $res)
     <div class="card" style="width: 52rem;">

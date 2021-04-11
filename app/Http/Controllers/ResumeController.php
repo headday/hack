@@ -4,11 +4,22 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Resume;
+use App\Models\Review;
 use Illuminate\Support\Facades\Cookie;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
 
 class ResumeController extends Controller
 {
+    public function Notice(){
+
+        $count=Review::select('id')->count();
+        return $count;
+
+    }
+
     public function GetAllResume(){
         $posts = Resume::all();
         $value = Cookie::get('token');
@@ -29,6 +40,10 @@ class ResumeController extends Controller
 
     public function GetResumeWithId($id){
 
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
         // $resume = Resume::join('users','resumes.user_id','=','users.id')->get();
         $resume = Resume::where('id','=',$id)->get();
         $resEvents = Resume::select('events')->where('id','=',$id)->get();
@@ -36,11 +51,31 @@ class ResumeController extends Controller
         $res = json_decode($resEvents,true);
         $res = $res[0]['events'];
         $arr = explode('`',$res);
+        $value = Cookie::get('token');
+        if(isset($value)){
+            $decodeToken = explode('`',$value);
+            $name = $decodeToken[3];
+            $cont='personal-page';
+
+            
+            return view('detailResume')->with(['resume' => $resume,'events' => $arr,'name' => $name,'cont'=>$cont]);
+        }
+        else{
+            $cont='welcome';
+            return view('detailResume')->with(['resume' => $resume,'events' => $arr,'cont'=>$cont]);
+        }
+        
 
 
         //$evt = explode(',', $resume['items'][0]['attributes']);
+<<<<<<< HEAD
         return view('detailResume')->with(['resume' => $resume,'events' => $arr,'id' =>$id]);
+=======
+        //return view('detailResume')->with(['resume' => $resume,'events' => $arr]);
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
     }
+
+
     public function SaveResume($data){
         
     }
@@ -85,7 +120,11 @@ class ResumeController extends Controller
         // $resumes::find($id)
         // dd($resumes);
         return view('my-resumes')->with(['posts' => $resumes]);
+<<<<<<< HEAD
     }
+=======
+        
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
 
     public function addMessage(Request $request) {
         $value = Cookie::get('token');
@@ -98,4 +137,6 @@ class ResumeController extends Controller
         DB::insert('insert into reviews (message,hr_id,resume_id) values (?, ?,?)', [$data['message'], $data['id'],$id]);
         return view('welcome');
     }
+
+    
 }

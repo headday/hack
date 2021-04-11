@@ -4,7 +4,11 @@
         <a class="nav-link active" aria-current="page" href="/my-resumes">Моё резюме</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Сообщения<span class="badge rounded-pill bg-warning">4</span></a>
+        <a class="nav-link" href="#">Сообщения<span class="badge rounded-pill bg-warning"><?
+        use App\Models\Review;
+        use App\Http\Controllers\ResumeController;
+        $res=new ResumeController();
+        echo $res->Notice();?></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/form-resume">Создать резюме</a>
