@@ -23,7 +23,7 @@
     <a class="nav-link" href="/registration"><p class="text-white">Регистрация</p></a>
   </li>
 </ul></div>
-@extends('left-bar')
+{{-- @extends('left-bar') --}}
   <div class="container" style="padding-left: 10%;">
     <div class="col-md-4 offset-4">
       
@@ -31,7 +31,7 @@
       @yield('form')
     </div>
     <div class="row">
-      @yield('my-resumes')
+     @yield('my-resumes')
       @yield('content')
     </div>
 

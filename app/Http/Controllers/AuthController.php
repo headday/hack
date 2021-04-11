@@ -50,6 +50,7 @@ class AuthController extends Controller
             
         ];
         DB::insert("insert into `users` (login,password,name,second_name,email,role_id) values('{$data['person_email']}','{$data['person_password']}','{$data['person_name']}','{$data['person_secondname']}','{$data['person_email']}','{$data['person_role']}')");
+        return redirect('/resume');
     }
 
     public function Auth(Request $request){

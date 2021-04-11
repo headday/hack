@@ -139,7 +139,7 @@ class ResumeController extends Controller
        $func=new ResumeController();
        $name=$func->Name();
        $cont=$func->inAkk();
-        return view('add-resume')->with(['cont'=>$cont]);
+        return view('personal-page')->with(['cont'=>$cont]);
 
    
 
