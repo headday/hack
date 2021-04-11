@@ -11,7 +11,11 @@ class ResumeController extends Controller
 {
     public function Notice(){
 
-        $count=Review::select('id')->count();
+        $value = Cookie::get('token');
+       
+        $userId = explode('`',$value);
+        $id = $userId[4];
+        $count=Review::select('id')->where('view',0)->where('resume_id',$id)->count();
         return $count;
 
     }
@@ -110,6 +114,17 @@ class ResumeController extends Controller
         // dd($resumes);
         return view('my-resumes')->with(['posts' => $resumes]);
         
+
+    }
+
+    public function showMessage(){
+        $value = Cookie::get('token');
+        $value = explode('`',$value);
+        $name = $value[3];
+        $id=$value[4];
+        $message=Review::select('message')->where('resume_id',$id)->where('view',0)->get();
+    
+        return view('show-message')->with(['name'=>$name,'messages'=>$message,DB::update('update reviews set view=1 where resume_id='.$id)]);
 
     }
 
