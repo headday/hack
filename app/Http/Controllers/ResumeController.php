@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Resume;
 use App\Models\Review;
 use Illuminate\Support\Facades\Cookie;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
 
 class ResumeController extends Controller
 {
@@ -40,7 +44,10 @@ class ResumeController extends Controller
 
     public function GetResumeWithId($id){
 
+<<<<<<< HEAD
+=======
         
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
         // $resume = Resume::join('users','resumes.user_id','=','users.id')->get();
         $resume = Resume::where('id','=',$id)->get();
         $resEvents = Resume::select('events')->where('id','=',$id)->get();
@@ -65,7 +72,11 @@ class ResumeController extends Controller
 
 
         //$evt = explode(',', $resume['items'][0]['attributes']);
+<<<<<<< HEAD
+        return view('detailResume')->with(['resume' => $resume,'events' => $arr,'id' =>$id]);
+=======
         //return view('detailResume')->with(['resume' => $resume,'events' => $arr]);
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
     }
 
 
@@ -113,8 +124,22 @@ class ResumeController extends Controller
         // $resumes::find($id)
         // dd($resumes);
         return view('my-resumes')->with(['posts' => $resumes]);
+<<<<<<< HEAD
+    }
+=======
         
+>>>>>>> 86681d099e3f1784e4e4617bc3cb41305c744308
 
+    public function addMessage(Request $request) {
+        $value = Cookie::get('token');
+       
+        $userId = explode('`',$value);
+        $id = $userId[4];
+
+        $data=$request->all();
+        // dd($data);
+        DB::insert('insert into reviews (message,hr_id,resume_id) values (?, ?,?)', [$data['message'], $data['id'],$id]);
+        return view('welcome');
     }
 
     public function showMessage(){

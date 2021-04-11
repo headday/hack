@@ -32,6 +32,8 @@ Route::get('/resume','App\Http\Controllers\ResumeController@GetAllResume');
 
 Route::get('/resume/{id}','App\Http\Controllers\ResumeController@GetResumeWithId');
 
+Route::post('/resume','App\Http\Controllers\ResumeController@addMessage')->name('addMessage');
+
 Route::get('/my-resumes','App\Http\Controllers\ResumeController@showMyResume');
 
 
