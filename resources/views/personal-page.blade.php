@@ -28,6 +28,17 @@
         </li>
       </ul></div>
       @extends('left-bar')
-      @yield('content')
+      {{-- @yield('content') --}}
+      <div class="container">
+        <div class="col-md-4 offset-4">
+          
+        
+        </div>
+        <div class="row" style="padding-left: 10%;">
+          @yield('my-resumes')
+          @yield('content')
+        </div>
+    
+      </div>
 </body>
 </html>
