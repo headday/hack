@@ -18,12 +18,14 @@ class AuthController extends Controller
         if(isset($value)){
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
+            $cont='personal-page';
 
             //dd($name);
-            return view('personal-page')->with(['name' => $name]);
+            return view('home')->with(['name' => $name,'cont'=>$cont]);
         }
         else{
-            return view('welcome');
+            $cont='welcome';
+            return view('home')->with(['cont'=>$cont]);
         }
        
     }
@@ -62,11 +64,7 @@ class AuthController extends Controller
         ->where('password','=',$password)
         ->count();
       
-<<<<<<< HEAD
-                
-=======
-                    
->>>>>>> d80140c02481e758cfc3df4156f7b045e8e75da4
+
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)

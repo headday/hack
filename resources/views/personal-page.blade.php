@@ -17,7 +17,7 @@
                 <span class="nav-link disable"><p class="text-white">{{$name}}</p></span>
               </li> 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><p class="text-white">Главная</p></a>
+          <a class="nav-link active" aria-current="page" href="/"><p class="text-white">Главная</p></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/resume"><p class="text-white">Вакансии</p></a>
@@ -27,5 +27,6 @@
         </li>
       </ul></div>
       @extends('left-bar')
+      @yield('content')
 </body>
 </html>

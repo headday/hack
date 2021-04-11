@@ -4,19 +4,33 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Resume;
+use Illuminate\Support\Facades\Cookie;
 
 
 class ResumeController extends Controller
 {
     public function GetAllResume(){
         $posts = Resume::all();
-        return view('resume')->with(['posts'=>$posts]);
+        $value = Cookie::get('token');
+        if(isset($value)){
+            $decodeToken = explode('`',$value);
+            $name = $decodeToken[3];
+            $cont='personal-page';
+
+            
+            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont]);
+        }
+        else{
+            $cont='welcome';
+            return view('resume')->with(['posts'=>$posts,'cont'=>$cont]);
+        }
+        
     }
 
     public function GetResumeWithId($id){
 
         $resume = Resume::find($id);
-        dump($resume);
+       // dump($resume);
 
         
         $resume = Resume::find($id)->join('users','resumes.user_id','=','users.id')->get();

@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends("$cont")
 @section('content')
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Начните вводить профиль</label>
