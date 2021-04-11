@@ -36,6 +36,8 @@ Route::post('/resume','App\Http\Controllers\ResumeController@addMessage')->name(
 
 Route::get('/my-resumes','App\Http\Controllers\ResumeController@showMyResume');
 
+Route::post('/favirite/add','App\Http\Controllers\ResumeController@postHeartResume')->name('addFavorite');
+
 
 Route::get('/form-resume', function () {
     return view('add-resume');

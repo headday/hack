@@ -48,8 +48,10 @@ class ResumeController extends Controller
         
 
     }
-    public function postHeartResume($id){
-        
+    public function postHeartResume(Request $request){
+        $req= $request->all();
+        DB::INSERT("INSERT INTO favorite_resume (id_resume,id_hr) VALUES ({$req['resume_id']},{$req['user_id']})");
+        return redirect('/resume');
     }
 
     public function GetAllResume(){
@@ -60,8 +62,9 @@ class ResumeController extends Controller
             $name = $decodeToken[3];
             $cont='personal-page';
             $role = $decodeToken[2];
+            $userId = $decodeToken[4];
             
-            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role',$role]);
+            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role',$role,'userid'=>$userId]);
         }
         else{
             $cont='welcome';
