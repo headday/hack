@@ -48,6 +48,9 @@ class ResumeController extends Controller
         
 
     }
+    public function postHeartResume($id){
+        
+    }
 
     public function GetAllResume(){
         $posts = Resume::all();
@@ -56,9 +59,9 @@ class ResumeController extends Controller
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
             $cont='personal-page';
-
+            $role = $decodeToken[2];
             
-            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont]);
+            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role',$role]);
         }
         else{
             $cont='welcome';
@@ -81,9 +84,10 @@ class ResumeController extends Controller
             $decodeToken = explode('`',$value);
             $name = $decodeToken[3];
             $cont='personal-page';
+            $role = $decodeToken[2];
 
             
-            return view('detailResume')->with(['resume' => $resume,'events' => $arr,'name' => $name,'cont'=>$cont]);
+            return view('detailResume')->with(['resume' => $resume,'events' => $arr,'name' => $name,'cont'=>$cont,'role' => $role]);
         }
         else{
             $cont='welcome';
@@ -94,7 +98,7 @@ class ResumeController extends Controller
 
         //$evt = explode(',', $resume['items'][0]['attributes']);
 
-        return view('detailResume')->with(['resume' => $resume,'events' => $arr,'id' =>$id]);
+        //return view('detailResume')->with(['resume' => $resume,'events' => $arr,'id' =>$id]);
 
 
     }
@@ -103,25 +107,8 @@ class ResumeController extends Controller
 
     
 
-    public function SaveResume($data){
-        
-    }
 
-    public function showAddResume() {
-        // $value = Cookie::get('token');
-        // if(isset($value)){
-        //     $decodeToken = explode('`',$value);
-        //     $name = $decodeToken[3];
-        //     $cont='personal-page';
 
-        //     //dd($name);
-        //     return view('add-resume')->with(['name' => $name,'cont'=>$cont]);
-        // }
-        // else{
-        //     $cont='welcome';
-        //     return view('add-resume')->with(['cont'=>$cont]);
-        // }
-    }
 
 
     public function addResume(Request $request) {
