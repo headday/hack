@@ -187,8 +187,9 @@ class ResumeController extends Controller
         $name = $value[3];
         $id=$value[4];
         $message=Review::select('message')->where('resume_id',$id)->where('view',0)->get();
-        
-        return view('show-message')->with(['name'=>$name,'messages'=>$message,DB::update('update reviews set view=1 where resume_id='.$id)]);
+        $informationHR =Review::join('users','users.id','=','hr_id')->where('view',0)->get();
+        // dd($informationHR);
+        return view('show-message')->with(['informationHR'=> $informationHR,'name'=>$name,'messages'=>$message,DB::update('update reviews set view=1 where resume_id='.$id)]);
 
     }
 
