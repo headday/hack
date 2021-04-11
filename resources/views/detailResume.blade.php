@@ -21,7 +21,7 @@
         <form method="post" action="{{route('addMessage')}}">
             <label for="">Сообщение</label>
             @foreach ($resume as  $res)
-            <input type="text" value="{{$res->id}}" hidden name="id">
+            <input type="text" value="{{$res->user_id}}" hidden name="id">
             @endforeach
             <input type="texrarea" name="message">
             <button type="submit" class="btn btn-success">Отправить</button>

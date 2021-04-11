@@ -1,4 +1,4 @@
-<div class="fixed-top w-25 p-3" id="left-bar">
+<div class="fixed-top w-25 p-3" id="left-bar" style="margin: 100px 0px 0px 0px;">
   <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="/my-resumes">Моё резюме</a>
@@ -16,5 +16,6 @@
       </li>
     </ul>
 </div>
+
 
 

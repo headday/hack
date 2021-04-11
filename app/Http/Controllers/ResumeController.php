@@ -12,11 +12,17 @@ class ResumeController extends Controller
     public function Notice(){
 
         $value = Cookie::get('token');
-       
-        $userId = explode('`',$value);
-        $id = $userId[4];
-        $count=Review::select('id')->where('view',0)->where('resume_id',$id)->count();
-        return $count;
+        
+        if($value==null){
+            return 0;
+        }else{
+            $userId = explode('`',$value);
+            $id = $userId[4];
+            $count=Review::select('id')->where('view',0)->where('resume_id',$id)->count();
+            return $count;
+        }
+        
+        
 
     }
 
@@ -95,9 +101,9 @@ class ResumeController extends Controller
     public function addResume(Request $request) {
 
         $value = Cookie::get('token');
-       
-       
+    
         $userId = explode('`',$value);
+        $name = $userId[3];
         $id = $userId[4];
 
             //dd($name);
@@ -121,7 +127,8 @@ class ResumeController extends Controller
         DB::insert("insert into `resumes` (age,address,phone,skills,education,work_experience,profession,stage,title_resume,events,user_id) 
         values('{$data['age']}','{$data['address']}','{$data['phone']}','{$data['skills']}',
         '{$data['education']}','{$data['work_experience']}','{$data['profession']}','{$data['stage']}','{$data['title_resume']}','{$data['events']}','$id')");
-        
+        return view('add-resume')->with(['name' => $name]);
+
    
     }
 
@@ -146,7 +153,7 @@ class ResumeController extends Controller
 
         $data=$request->all();
         // dd($data);
-        DB::insert('insert into reviews (message,hr_id,resume_id) values (?, ?,?)', [$data['message'], $data['id'],$id]);
+        DB::insert('insert into reviews (message,hr_id,resume_id) values (?, ?,?)', [$data['message'], $id,$data['id']]);
         return view('welcome');
     }
 
@@ -156,7 +163,7 @@ class ResumeController extends Controller
         $name = $value[3];
         $id=$value[4];
         $message=Review::select('message')->where('resume_id',$id)->where('view',0)->get();
-    
+        
         return view('show-message')->with(['name'=>$name,'messages'=>$message,DB::update('update reviews set view=1 where resume_id='.$id)]);
 
     }

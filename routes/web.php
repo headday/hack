@@ -44,7 +44,9 @@ Route::get('/form-resume', function () {
 
 Route::post('/form-resume',
             'App\Http\Controllers\ResumeController@addResume')->name('addResume');
+
 Route::post('/form-resume','App\Http\Controllers\ResumeController@addResume')->name('addResume');
+
 Route::get('/show-message','App\Http\Controllers\ResumeController@showMessage');
 
 

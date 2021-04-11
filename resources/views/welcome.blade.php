@@ -9,9 +9,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="fixed-to p-3 mb-2 bg-secondary w-auto p-3 text-white shadow-lg p-3  rounded" style="width: max-content;"><ul class="nav justify-content-end">
+    <div class="fixed-to p-3 mb-2 bg-secondary w-auto p-3 text-white shadow-lg p-3  rounded" ><ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#"><p class="text-white">Главная</p></a>
+    <a class="nav-link active" aria-current="page" ><p class="text-white">Главная</p></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/resume"><p class="text-white">Вакансии</p></a>
@@ -23,7 +23,8 @@
     <a class="nav-link" href="/registration"><p class="text-white">Регистрация</p></a>
   </li>
 </ul></div>
-  <div class="container-sm">
+@extends('left-bar')
+  <div class="container" style="padding-left: 10%;">
     <div class="col-md-4 offset-4">
       
       @yield('form-resume')
