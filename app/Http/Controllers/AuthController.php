@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 
-
-
 {
     public function Index(Request $request){
         
