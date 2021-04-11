@@ -208,8 +208,19 @@ class ResumeController extends Controller
         return view('favorites')->with(['posts' => $resumes,'cont'=>$cont,'name'=>$name]);
     }
     
-    public function showLinkFavorite() {
+    // public function showLinkFavorites() {
+    //     $value = Cookie::get('token');
+    //     // dd($value);
+
+    //     if(isset($value)){
+    //         $decodeToken = explode('`',$value);  
         
-    }
+    //         $role = $decodeToken[2];
+          
+    //         return view('personal-page')->with(['role'=>$role]);
+    //     } else {
+    //         return view('welcome');
+    //     }
+    // }
     
 }
