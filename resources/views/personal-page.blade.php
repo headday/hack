@@ -41,7 +41,7 @@
         
         </div>
         <div class="row" style="padding-left: 10%;">
-          @yield('my-resumes')
+          @yield('form-resume')
           @yield('content')
         </div>
     

@@ -1,4 +1,4 @@
-@extends("{$cont}")
+@extends("personal-page")
 
 @section('form-resume')
 
