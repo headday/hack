@@ -64,7 +64,7 @@ class ResumeController extends Controller
             $role = $decodeToken[2];
             $userId = $decodeToken[4];
             
-            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role',$role,'userid'=>$userId]);
+            return view('resume')->with(['posts'=>$posts,'name' => $name,'cont'=>$cont,'role'=>$role,'userid'=>$userId]);
         }
         else{
             $cont='welcome';
@@ -145,7 +145,7 @@ class ResumeController extends Controller
        $func=new ResumeController();
        $name=$func->Name();
        $cont=$func->inAkk();
-        return view('add-resume')->with(['cont'=>$cont]);
+        return view('personal-page')->with(['cont'=>$cont]);
 
    
 
