@@ -5,10 +5,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Cookie;
-<<<<<<< HEAD
-
-=======
->>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
 
 class ResumeController extends Controller
 {
@@ -32,14 +28,6 @@ class ResumeController extends Controller
 
     public function GetResumeWithId($id){
 
-<<<<<<< HEAD
-        $resume = Resume::find($id);
-       // dump($resume);
-=======
-        // $resume = Resume::find($id);
-        // dump($resume);
->>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
-
         
         // $resume = Resume::join('users','resumes.user_id','=','users.id')->get();
         $resume = Resume::where('id','=',$id)->get();
@@ -48,11 +36,27 @@ class ResumeController extends Controller
         $res = json_decode($resEvents,true);
         $res = $res[0]['events'];
         $arr = explode('`',$res);
+        $value = Cookie::get('token');
+        if(isset($value)){
+            $decodeToken = explode('`',$value);
+            $name = $decodeToken[3];
+            $cont='personal-page';
+
+            
+            return view('detailResume')->with(['resume' => $resume,'events' => $arr,'name' => $name,'cont'=>$cont]);
+        }
+        else{
+            $cont='welcome';
+            return view('detailResume')->with(['resume' => $resume,'events' => $arr,'cont'=>$cont]);
+        }
+        
 
 
         //$evt = explode(',', $resume['items'][0]['attributes']);
-        return view('detailResume')->with(['resume' => $resume,'events' => $arr]);
+        //return view('detailResume')->with(['resume' => $resume,'events' => $arr]);
     }
+
+
     public function SaveResume($data){
         
     }

@@ -63,11 +63,7 @@ class AuthController extends Controller
         ->where('login','=',$login)
         ->where('password','=',$password)
         ->count();
-<<<<<<< HEAD
-      
 
-=======
->>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
         if($profile > 0){
             $name=Profile::select('name')
                 ->where('login','=',$login)
@@ -77,7 +73,7 @@ class AuthController extends Controller
                 $name=$name[0]->name;
 
 
-                $userId=Profile::select('user_id')
+                $userId=Profile::select('id')
                 ->where('login','=',$login)
                 ->where('password','=',$password)->get();
                 $userId=$userId->toJson();

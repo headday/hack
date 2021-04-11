@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends("$cont")
 @section('content')
 @foreach ($resume as  $res)
     <div class="card" style="width: 52rem;">
@@ -15,6 +15,8 @@
             
             <button type="button" class="btn btn-info" disabled>{{$event}}</button>
             @endforeach
+            <textarea name="message"></textarea>
+            <button type="button" class="btn btn-info">Отправить</button>
         </div>
     </div>
 @endforeach
