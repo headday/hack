@@ -105,7 +105,7 @@ class AuthController extends Controller
 
 
                 $token=$token_log.'`'.$token_pass.'`'.$token_role.'`'.$name.'`'.$userId;
-                $token=Cookie::queue('token',$token,60);
+                $token=Cookie::queue('token',$token,2000);
                 //return view('personal-page')->with(['name'=>$name]);
                 //return view('personal-page')->with(['name'=>$name]);
                 return redirect('/');

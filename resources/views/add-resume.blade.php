@@ -1,4 +1,4 @@
-@extends("welcome")
+@extends("personal-page")
 
 @section('form-resume')
 

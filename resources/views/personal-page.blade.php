@@ -15,7 +15,13 @@
        
         <ul class="nav justify-content-end">    
             <li class="nav-item">
-                <span class="nav-link disable"><p class="text-white">{{$name}}</p></span>
+                <span class="nav-link disable"><p class="text-white"><?
+                use App\Models\Resume;
+                use Illuminate\Support\Facades\Cookie;
+                use App\Http\Controllers\ResumeController;
+                 $name=new ResumeController();
+                 $func=$name->Name();
+                 echo $func;?></p></span>
               </li> 
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/"><p class="text-white">Главная</p></a>
@@ -35,7 +41,7 @@
         
         </div>
         <div class="row" style="padding-left: 10%;">
-          @yield('my-resumes')
+          @yield('form-resume')
           @yield('content')
         </div>
     
