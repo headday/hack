@@ -11,7 +11,7 @@
         </p>
         <p>Участие в мероприятиях</p>
         <div>
-            @foreach ($events as $event )
+            @foreach ($events as $event)
             
             <button type="button" class="btn btn-info" disabled>{{$event}}</button>
             @endforeach

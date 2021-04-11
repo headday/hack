@@ -4,7 +4,7 @@
 
 <form method="POST" action="{{route('addResume')}}" enctype="multipart/form-data">
     
-  <input type="file"name="image"> 
+  
    <div class="mt-4 mb-3">
       <label for="exampleInputEmail1" class="form-label"><strong>Название резюме</strong></label>
       <input type="text" class="form-control" name="title_resume">

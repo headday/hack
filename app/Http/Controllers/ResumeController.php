@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Cookie;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
 
 class ResumeController extends Controller
 {
@@ -29,11 +32,17 @@ class ResumeController extends Controller
 
     public function GetResumeWithId($id){
 
+<<<<<<< HEAD
         $resume = Resume::find($id);
        // dump($resume);
+=======
+        // $resume = Resume::find($id);
+        // dump($resume);
+>>>>>>> f498a7d21e3cabfa198ed7e450cda988c1f71fd8
 
         
-        $resume = Resume::find($id)->join('users','resumes.user_id','=','users.id')->get();
+        // $resume = Resume::join('users','resumes.user_id','=','users.id')->get();
+        $resume = Resume::where('id','=',$id)->get();
         $resEvents = Resume::select('events')->where('id','=',$id)->get();
         $resEvents->toJson();
         $res = json_decode($resEvents,true);
@@ -50,6 +59,15 @@ class ResumeController extends Controller
 
     public function addResume(Request $request) {
 
+        $value = Cookie::get('token');
+       
+        $userId = explode('`',$value);
+        $id = $userId[4];
+
+            //dd($name);
+           
+        
+
         $data=$request->all();
         $endData = [
             'age' => $data['age'],
@@ -61,12 +79,24 @@ class ResumeController extends Controller
             'profession' => $data['profession'],
             'stage' => $data['stage'],
             'title_resume' => $data['title_resume'],
-            'events' => $data['events'],
-            'image' => $data['image']
+            'events' => $data['events']
         ];
 
         DB::insert("insert into `resumes` (age,address,phone,skills,education,work_experience,profession,stage,title_resume,events,user_id) 
         values('{$data['age']}','{$data['address']}','{$data['phone']}','{$data['skills']}',
-        '{$data['education']}','{$data['work_experience']}','{$data['profession']}','{$data['stage']}','{$data['title_resume']}','{$data['events']}','$user_id')");
+        '{$data['education']}','{$data['work_experience']}','{$data['profession']}','{$data['stage']}','{$data['title_resume']}','{$data['events']}','$id')");
+    }
+
+    public function showMyResume(){
+        $value = Cookie::get('token');
+       
+        $userId = explode('`',$value);
+        $id = $userId[4];
+
+        $resumes = Resume::select()->where('user_id','=',$id)->get();
+        // $resumes::find($id)
+        // dd($resumes);
+        return view('my-resumes')->with(['posts' => $resumes]);
+
     }
 }
